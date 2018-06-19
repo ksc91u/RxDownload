@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="download_success">Download completed</string>
+    <string name="downloading">Downloading</string>
+    <string name="failed">Download failed</string>
+    <string name="pending">Pending</string>
+</resources>

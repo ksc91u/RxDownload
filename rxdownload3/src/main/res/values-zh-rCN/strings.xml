@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="download_success">下载成功</string>
+    <string name="downloading">下载中</string>
+    <string name="failed">下载失败</string>
+    <string name="pending">等待中</string>
+</resources>

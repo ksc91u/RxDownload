@@ -29,10 +29,10 @@ class NotificationFactoryImpl : NotificationFactory {
 
         return when (status) {
             is Suspend -> suspend(builder)
-            is Waiting -> waiting(builder)
-            is Downloading -> downloading(builder, status)
-            is Failed -> failed(builder)
-            is Succeed -> succeed(builder)
+            is Waiting -> waiting(builder, context)
+            is Downloading -> downloading(builder, status, context)
+            is Failed -> failed(builder, context)
+            is Succeed -> succeed(builder, context)
             is ApkInstallExtension.Installing -> installing(builder)
             is ApkInstallExtension.Installed -> installed(builder)
             is Deleted -> deleted(context, mission)
@@ -66,14 +66,14 @@ class NotificationFactoryImpl : NotificationFactory {
         return builder.build()
     }
 
-    private fun succeed(builder: Builder): Notification {
-        builder.setContentText("下载成功")
+    private fun succeed(builder: Builder, context: Context): Notification {
+        builder.setContentText(context.resources.getString(R.string.download_success))
         dismissProgress(builder)
         return builder.build()
     }
 
-    private fun downloading(builder: Builder, status: Status): Notification {
-        builder.setContentText("下载中")
+    private fun downloading(builder: Builder, status: Status, context: Context): Notification {
+        builder.setContentText(context.resources.getString(R.string.downloading) )
         if (status.chunkFlag) {
             builder.setProgress(0, 0, true)
         } else {
@@ -82,14 +82,14 @@ class NotificationFactoryImpl : NotificationFactory {
         return builder.build()
     }
 
-    private fun failed(builder: Builder): Notification {
-        builder.setContentText("下载失败")
+    private fun failed(builder: Builder, context: Context): Notification {
+        builder.setContentText(context.resources.getString(R.string.failed))
         dismissProgress(builder)
         return builder.build()
     }
 
-    private fun waiting(builder: Builder): Notification {
-        builder.setContentText("等待中")
+    private fun waiting(builder: Builder, context: Context): Notification {
+        builder.setContentText(context.resources.getString(R.string.pending))
         builder.setProgress(0, 0, true)
         return builder.build()
     }
