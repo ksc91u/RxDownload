@@ -9,6 +9,7 @@ import android.graphics.Color
 import android.os.Build
 import android.os.Build.VERSION.SDK_INT
 import android.os.Build.VERSION_CODES.O
+import android.support.v4.app.NotificationCompat
 import android.support.v4.app.NotificationCompat.Builder
 import zlc.season.rxdownload3.R
 import zlc.season.rxdownload3.core.*
@@ -68,6 +69,7 @@ class NotificationFactoryImpl : NotificationFactory {
 
     private fun succeed(builder: Builder, context: Context): Notification {
         builder.setContentText(context.resources.getString(R.string.download_success))
+        builder.priority = NotificationCompat.PRIORITY_MAX
         dismissProgress(builder)
         return builder.build()
     }
