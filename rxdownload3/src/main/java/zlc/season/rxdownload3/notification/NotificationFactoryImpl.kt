@@ -120,7 +120,7 @@ class NotificationFactoryImpl : NotificationFactory {
     private fun createChannelForOreo(context: Context, channelId: String, channelName: String) {
         if (SDK_INT >= O) {
             val notificationManager = context.getSystemService(NOTIFICATION_SERVICE) as NotificationManager
-            val channel = NotificationChannel(channelId, channelName, NotificationManager.IMPORTANCE_LOW)
+            val channel = NotificationChannel(channelId, channelName, NotificationManager.IMPORTANCE_HIGH)
             channel.enableLights(true)
             channel.setShowBadge(true)
             channel.lightColor = Color.GREEN
